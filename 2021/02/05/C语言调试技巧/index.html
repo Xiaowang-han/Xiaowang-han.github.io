@@ -6,14 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>C语言调试技巧 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="C语言调试技巧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言调试技巧">
+<meta property="og:url" content="http://example.com/2021/02/05/C%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="C语言调试技巧">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ss.csdn.net/p?http://mmbiz.qpic.cn/mmbiz_jpg/Ik9bwFWNz2COLF9IM0ibcqjy8BnoHgvg5vW7KXtC4e5lzUqvXCtgg4A6Pll58lMutjq7Uk8ZX8tC3fSc6T5cibLQ/0?wx_fmt=jpeg">
+<meta property="og:image" content="https://ss.csdn.net/p?http://mmbiz.qpic.cn/mmbiz_gif/2A8tXicCG8yka2rcVsmkqPjN4taJfwp3wUy7KTTM4IhnOjTMdC3zXRYGElM7Pia1AhvV02UlibtPKoRFc9icv40dHA/0?wx_fmt=gif&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://ss.csdn.net/p?http://mmbiz.qpic.cn/mmbiz_gif/2A8tXicCG8yka2rcVsmkqPjN4taJfwp3wxQKXe3ibNiadib0xqp2uYXribWiby2WCrXmO4q1CXAibbpugibUNvdA2yuuNQ/0?wx_fmt=gif&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://ss.csdn.net/p?https://mmbiz.qpic.cn/mmbiz_gif/2A8tXicCG8yka2rcVsmkqPjN4taJfwp3w5fLdGxLudXOB5pdrwh2vbClrZU7KC5QysFhibrkP9spDK2kONPHTUnw/0?wx_fmt=gif">
+<meta property="article:published_time" content="2021-02-05T12:46:19.000Z">
+<meta property="article:modified_time" content="2021-02-06T08:34:02.545Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ss.csdn.net/p?http://mmbiz.qpic.cn/mmbiz_jpg/Ik9bwFWNz2COLF9IM0ibcqjy8BnoHgvg5vW7KXtC4e5lzUqvXCtgg4A6Pll58lMutjq7Uk8ZX8tC3fSc6T5cibLQ/0?wx_fmt=jpeg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -158,15 +167,14 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-    <article id="post-C语言调试技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-C语言调试技巧" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/05/C%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/">C语言调试技巧</a>
+    <h1 class="article-title" itemprop="name">
+      C语言调试技巧
     </h1>
   
 
@@ -179,12 +187,53 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="C语言调试技巧"><a href="#C语言调试技巧" class="headerlink" title="C语言调试技巧"></a>C语言调试技巧</h1>
-        
-          <a class="article-more-a" href="/2021/02/05/C%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/#more">more >></a>
-        
+        <h1 id="C语言调试技巧"><a href="#C语言调试技巧" class="headerlink" title="C语言调试技巧"></a>C语言调试技巧</h1><a id="more"></a>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>每一次调试都是尝试破案的过程，当程序员敲写代码后，成功运行是第一目标，但非关键，因为成功运行并且达到预期的目的，才是最终成功，但成功的前提是会调试代码。  </p>
+<h2 id="何为Bug？"><a href="#何为Bug？" class="headerlink" title="何为Bug？"></a>何为Bug？</h2><p>Bug最本身的意思是臭虫，但为何后来被人们叫为计算机程序中的问题呢，一开始源于一个有趣的故事———第一次被发现的导致计算机错误的飞蛾，也是第一个计算机程序错误。<br><img src="https://ss.csdn.net/p?http://mmbiz.qpic.cn/mmbiz_jpg/Ik9bwFWNz2COLF9IM0ibcqjy8BnoHgvg5vW7KXtC4e5lzUqvXCtgg4A6Pll58lMutjq7Uk8ZX8tC3fSc6T5cibLQ/0?wx_fmt=jpeg" alt="Bug">  </p>
+<h2 id="调试的基本步骤"><a href="#调试的基本步骤" class="headerlink" title="调试的基本步骤"></a>调试的基本步骤</h2><p><img src="https://ss.csdn.net/p?http://mmbiz.qpic.cn/mmbiz_gif/2A8tXicCG8yka2rcVsmkqPjN4taJfwp3wUy7KTTM4IhnOjTMdC3zXRYGElM7Pia1AhvV02UlibtPKoRFc9icv40dHA/0?wx_fmt=gif&wxfrom=5&wx_lazy=1" alt="程序员的辛酸"><br><img src="https://ss.csdn.net/p?http://mmbiz.qpic.cn/mmbiz_gif/2A8tXicCG8yka2rcVsmkqPjN4taJfwp3wxQKXe3ibNiadib0xqp2uYXribWiby2WCrXmO4q1CXAibbpugibUNvdA2yuuNQ/0?wx_fmt=gif&wxfrom=5&wx_lazy=1" alt="程序员"><br><img src="https://ss.csdn.net/p?https://mmbiz.qpic.cn/mmbiz_gif/2A8tXicCG8yka2rcVsmkqPjN4taJfwp3w5fLdGxLudXOB5pdrwh2vbClrZU7KC5QysFhibrkP9spDK2kONPHTUnw/0?wx_fmt=gif" alt="程序员"><br>调试（英语：Debugging / Debug），又称除错，是发现和减少计算机程序或电子仪器设备中程序错误的一个过程。 下面介绍调试的步骤：  </p>
+<ol>
+<li>发现程序错误的存在</li>
+<li>以隔离、消除等方式对错误进行定位</li>
+<li>确定错误产生的原因</li>
+<li>提出纠正错误的解决办法</li>
+<li>对程序错误予以改正，重新测试    <h2 id="Debug和Release"><a href="#Debug和Release" class="headerlink" title="Debug和Release"></a>Debug和Release</h2></li>
+</ol>
+<p>Debug 通常称为调试版本，它包含调试信息，并且不作任何优化，便于程序员调试程序。<br>Release 称为发布版本，它往往是进行了各种优化，使得程序在代码大小和运行速度上都是最优的，以便用户很好地使用。  </p>
+<h2 id="常用快捷键汇总"><a href="#常用快捷键汇总" class="headerlink" title="常用快捷键汇总"></a>常用快捷键汇总</h2><p>F5<br>启动调试，经常用来直接调到下一个断点处。<br>F9<br>创建断点和取消断点 断点的重要作用，可以在程序的任意位置设置断点。这样就可以使得程序在想要的位置随意停止执行，继而一步步执行下去。<br>F10<br>逐过程，通常用来处理一个过程，一个过程可以是一次函数调用，或者是一条语句。<br>F11<br>逐语句，就是每次都执行一条语句，但是这个快捷键可以使我们的执行逻辑进入函数内部（这是最长用的）。<br>CTRL + F5<br>开始执行不调试，如果你想让程序直接运行起来而不调试就可以直接使用。<br>（在调试过程中遇到的问题：只用F5时会出现调试不成功的情况，后通过百度解决）  </p>
+<h2 id="调试时查看当时信息"><a href="#调试时查看当时信息" class="headerlink" title="调试时查看当时信息"></a>调试时查看当时信息</h2><ol>
+<li>在调试时查看变量信息：调试-&gt;窗口-&gt;监视-&gt;窗口1,2,都可。  </li>
+<li>在调试时查看内存信息：调试-&gt;窗口-&gt;内存-&gt;内存1,2.  </li>
+<li>查看调用堆栈信息：调试-&gt;窗口-&gt;调用堆栈。  </li>
+</ol>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/zhifubao.JPG">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -193,16 +242,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/05/C%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://Xiaowang-han.github.io/021/02/05/C%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2021/02/01/%E5%8D%9A%E5%AE%A2%E5%88%9D%E5%B0%9D%E8%AF%95-C%E8%AF%AD%E8%A8%80%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">博客初尝试--C语言冒泡排序</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -217,155 +325,38 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-<span id="busuanzi_container_page_pv">
-  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-</span>
-  
-    <article id="post-博客初尝试-C语言冒泡排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/01/%E5%8D%9A%E5%AE%A2%E5%88%9D%E5%B0%9D%E8%AF%95-C%E8%AF%AD%E8%A8%80%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/">博客初尝试--C语言冒泡排序</a>
-    </h1>
-  
-
-        
-        <a href="/2021/02/01/%E5%8D%9A%E5%AE%A2%E5%88%9D%E5%B0%9D%E8%AF%95-C%E8%AF%AD%E8%A8%80%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" class="archive-article-date">
-  	<time datetime="2021-02-01T14:08:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="C语言冒泡排序的实现"><a href="#C语言冒泡排序的实现" class="headerlink" title="C语言冒泡排序的实现"></a>C语言冒泡排序的实现</h1>
-        
-          <a class="article-more-a" href="/2021/02/01/%E5%8D%9A%E5%AE%A2%E5%88%9D%E5%B0%9D%E8%AF%95-C%E8%AF%AD%E8%A8%80%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/01/%E5%8D%9A%E5%AE%A2%E5%88%9D%E5%B0%9D%E8%AF%95-C%E8%AF%AD%E8%A8%80%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7"><span class="toc-number">1.</span> <span class="toc-text">C语言调试技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E4%B8%BABug%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">何为Bug？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.3.</span> <span class="toc-text">调试的基本步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Debug%E5%92%8CRelease"><span class="toc-number">1.4.</span> <span class="toc-text">Debug和Release</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB"><span class="toc-number">1.5.</span> <span class="toc-text">常用快捷键汇总</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E6%97%B6%E6%9F%A5%E7%9C%8B%E5%BD%93%E6%97%B6%E4%BF%A1%E6%81%AF"><span class="toc-number">1.6.</span> <span class="toc-text">调试时查看当时信息</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-<span id="busuanzi_container_page_pv">
-  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-</span>
   
-    <article id="post-我的第一篇博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/31/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
-    </h1>
   
 
-        
-        <a href="/2021/01/31/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2021-01-31T07:33:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="我的博客文章编写"><a href="#我的博客文章编写" class="headerlink" title="我的博客文章编写"></a>我的博客文章编写</h1>
-        
-          <a class="article-more-a" href="/2021/01/31/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/#more">more >></a>
-        
-      
+  
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+  
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/31/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
+  
 
 
 <span id="busuanzi_container_page_pv">
   本文总阅读量<span id="busuanzi_value_page_pv"></span>次
 </span>
-  
-  
-
-
           </div>
         </div>
       </div>
@@ -392,8 +383,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
